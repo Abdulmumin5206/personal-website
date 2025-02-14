@@ -240,3 +240,20 @@ button:hover {
     font-size: 30px;
     cursor: pointer;
 }
+
+/* Header Logo Styling */
+.site-header {
+    position: absolute;
+    top: 20px;
+    left: 60px;
+}
+
+.site-logo {
+    width: 100px; /* Matches resized logo */
+    height: auto;
+    transition: transform 0.3s ease-in-out;
+}
+
+.site-logo:hover {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
