@@ -12,7 +12,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 10px; /* Reduced padding */
+    
     background: white;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -20,6 +20,7 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
+    height: 50px; /* Reduce header height */
 }
 
 .nav-links {
@@ -105,7 +106,7 @@ body {
 }
 
 .logo img {
-    width: 100px; /* Keep width the same */
-    height: 60px; /* Reduce height */
+    width: 150px; /* Keep width the same */
+    height: 150px; /* Reduce height */
     object-fit: contain; /* Ensures the image scales proportionally */
 }
