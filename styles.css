@@ -7,12 +7,12 @@ body {
     color: #333;
 }
 
-/* Fix Header & Navigation */
+/* Header (Fixed Alignment) */
 .site-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    
+    padding: 10px 10px;
     background: white;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -20,25 +20,34 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    height: 50px; /* Reduce header height */
+    height: 40px;
 }
 
+/* Logo (Left Side) */
+.logo {
+    margin-left: 10px;
+}
+
+.logo img {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+/* Navigation (Right Side) */
 .nav-links {
     display: flex;
     justify-content: flex-end;
     flex-grow: 1;
-    padding-right: 30px; /* Adds air gap from the right edge */
+    padding-right: 30px;
 }
-
-
 
 .nav-links ul {
     list-style: none;
     display: flex;
-    gap: 10px;  /* Reduce space between menu items */
+    gap: 10px;
     margin: 0;
     padding: 0;
-    flex-wrap: nowrap;  /* Prevents breaking to the next line */
 }
 
 .nav-links ul li {
@@ -49,8 +58,8 @@ body {
     text-decoration: none;
     color: #333;
     font-weight: bold;
-    font-size: 14px; /* Reduce font size slightly */
-    padding: 6px 8px; /* Reduce padding */
+    font-size: 14px;
+    padding: 6px 8px;
     display: block;
     transition: color 0.3s ease-in-out;
 }
@@ -58,32 +67,6 @@ body {
 .nav-links ul li a:hover {
     color: #007BFF;
 }
-
-/* Responsive Fixes */
-@media (max-width: 1024px) {
-    .site-header {
-        padding: 10px 15px;
-    }
-
-    .nav-links {
-        max-width: 60%;
-    }
-}
-
-@media (max-width: 800px) {
-    .nav-links ul {
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 5px;
-    }
-
-    .nav-links ul li a {
-        font-size: 12px;
-        padding: 5px;
-    }
-}
-
-
 
 /* Main Content */
 .content {
@@ -99,14 +82,4 @@ body {
 
 .content p {
     font-size: 18px;
-}
-
-.logo {
-    margin-left: 30px; /* Adds air gap from the left edge */
-}
-
-.logo img {
-    width: 150px; /* Keep width the same */
-    height: 150px; /* Reduce height */
-    object-fit: contain; /* Ensures the image scales proportionally */
 }
