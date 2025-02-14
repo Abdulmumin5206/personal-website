@@ -1,32 +1,46 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const links = document.querySelectorAll(".sidebar ul li a");
-    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    const modal = document.getElementById("project-modal");
+    const modalTitle = document.getElementById("modal-title");
+    const modalImg = document.getElementById("modal-img");
+    const modalDesc = document.getElementById("modal-desc");
+    const modalLink = document.getElementById("modal-link");
 
-    // Load Dark Mode preference
-    if (localStorage.getItem("darkMode") === "enabled") {
-        document.body.classList.add("dark-mode");
-    }
-
-    // Dark Mode Toggle
-    darkModeToggle.addEventListener("click", () => {
-        document.body.classList.toggle("dark-mode");
-
-        // Save preference in localStorage
-        if (document.body.classList.contains("dark-mode")) {
-            localStorage.setItem("darkMode", "enabled");
-        } else {
-            localStorage.setItem("darkMode", "disabled");
+    const projectData = [
+        {
+            title: "Project 1",
+            image: "images/project1.jpg",
+            description: "This is a detailed description of Project 1.",
+            link: "https://github.com/yourusername/project1"
+        },
+        {
+            title: "Project 2",
+            image: "images/project2.jpg",
+            description: "This is a detailed description of Project 2.",
+            link: "https://github.com/yourusername/project2"
+        },
+        {
+            title: "Project 3",
+            image: "images/project3.jpg",
+            description: "This is a detailed description of Project 3.",
+            link: "https://github.com/yourusername/project3"
         }
-    });
+    ];
 
-    // Smooth Page Transitions
-    links.forEach(link => {
-        link.addEventListener("click", (event) => {
-            event.preventDefault();
-            document.body.classList.add("fade-out");
-            setTimeout(() => {
-                window.location.href = link.href;
-            }, 300);
-        });
+    window.openModal = function(index) {
+        modal.style.display = "flex";
+        modalTitle.textContent = projectData[index - 1].title;
+        modalImg.src = projectData[index - 1].image;
+        modalDesc.textContent = projectData[index - 1].description;
+        modalLink.href = projectData[index - 1].link;
+    };
+
+    window.closeModal = function() {
+        modal.style.display = "none";
+    };
+
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            closeModal();
+        }
     });
 });
