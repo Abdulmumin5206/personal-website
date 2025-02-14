@@ -105,6 +105,7 @@ body {
 }
 
 .logo img {
-    width: 100px;
-    height: 100px;
+    width: 100px; /* Keep width the same */
+    height: 60px; /* Reduce height */
+    object-fit: contain; /* Ensures the image scales proportionally */
 }
