@@ -243,17 +243,19 @@ button:hover {
 
 /* Header Logo Styling */
 .site-header {
-    position: absolute;
-    top: 20px;
-    left: 60px;
+    position: fixed; /* Keeps the logo at the top */
+    top: 20px; /* Adjusts distance from top */
+    left: 30px; /* Adjusts distance from left */
+    z-index: 1000; /* Ensures it stays above other elements */
 }
 
 .site-logo {
-    width: 100px; /* Matches resized logo */
-    height: auto;
+    width: auto; /* Keeps aspect ratio */
+    height: 40px; /* Adjusts height for perfect size */
+    display: block;
     transition: transform 0.3s ease-in-out;
 }
 
 .site-logo:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
+    transform: scale(1.1); /* Adds a subtle hover effect */
 }
