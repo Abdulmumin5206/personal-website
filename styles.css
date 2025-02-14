@@ -39,7 +39,7 @@ body {
 .sidebar ul li a {
     display: block;
     padding: 10px;
-    transition: background 0.3s;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .sidebar ul li a img {
@@ -87,6 +87,20 @@ body {
 .dark-mode {
     background-color: #121212;
     color: white;
+}
+
+.dark-mode .sidebar {
+    background-color: #222;
+}
+
+.dark-mode .sidebar ul li a {
+    color: white;
+}
+
+.dark-mode button {
+    background-color: #444;
+    color: white;
+    border: 1px solid white;
 }
 
 .dark-mode .sidebar {
