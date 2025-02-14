@@ -3,38 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome | My Website</title>
+    <title>Abdulmumin | Engineer</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<header class="site-header">
-    <a href="index.html">
-        <img src="images/logo.svg" alt="My Logo" class="site-logo">
-    </a>
-</header>
+    <!-- Header Section -->
+    <header class="site-header">
+        <!-- Left Side: Logo -->
+        <a href="index.html" class="logo">
+            <img src="images/logo_small.png" alt="Abdulmumin Logo">
+        </a>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <nav>
+        <!-- Right Side: Navigation Menu -->
+        <nav class="nav-links">
             <ul>
-                <li data-text="🏠 Home"><a href="index.html"><img src="images/home.png" alt="Home"></a></li>
-                <li data-text="🧑 About Me"><a href="about.html"><img src="images/about.svg" alt="About"></a></li>
-                <li data-text="📄 Resume"><a href="resume.html"><img src="images/resume.svg" alt="Resume"></a></li>
-                <li data-text="📂 Portfolio"><a href="portfolio.html"><img src="images/portfolio.svg" alt="Portfolio"></a></li>
-                <li data-text="📝 Blog"><a href="blog.html"><img src="images/blog.svg" alt="Blog"></a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
-    </aside>
+    </header>
 
-    <!-- Main Content -->
-    <main class="home-content">
+    <!-- Hero Section -->
+    <section class="hero">
         <h1>Welcome to My Personal Website</h1>
-        <p>This page is completely independent. You can add anything you want here.</p>
-        <button id="dark-mode-toggle">🌙 Toggle Dark Mode</button>
-    </main>
+        <p>I'm Abdulmumin, an engineer passionate about technology, innovation, and creativity.</p>
+        <div class="hero-buttons">
+            <a href="portfolio.html" class="btn">View My Work</a>
+            <a href="contact.html" class="btn secondary">Get in Touch</a>
+        </div>
+    </section>
 
-    <script src="script.js"></script>
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Abdulmumin. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
 
 </body>
 </html>
