@@ -3,19 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | Abdulmumin</title>
+    <title>About Me | Animated Timeline</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Header will be dynamically inserted here -->
+    <!-- Header -->
     <div id="header-container"></div>
-
-    <script src="header.js"></script>
-
-    <!-- About Page Content -->
-    <main class="content">
-        <h1>About Me</h1>
-        <p>This is where I will introduce myself and talk about my journey.</p>
-    </main>
+    <script>
+        function loadHeader() {
+            fetch("header.html")
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("header-container").innerHTML = data;
+                })
+                .catch(error => console.error("Error loading header:", error));
+        }
+        loadHeader();
+    </script>
+    
+    <div class="page-wrapper">
+        <div class="content-wrapper">
+            <div class="section-timeline-heading">
+                <div class="container">
+                    <div class="timeline-main_heading-wrapper">
+                        <h2>My Life Journey</h2>
+                        <p class="paragraph-large">
+                            A timeline showcasing the key milestones in my life journey.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="section-timeline">
+                <div class="container">
+                    <div class="timeline_component">
+                        <div class="timeline_progress">
+                            <div class="timeline_progress-bar"></div>
+                        </div>
+                        <div class="timeline_item">
+                            <div class="timeline_left">
+                                <div class="timeline_date-text">2000</div>
+                            </div>
+                            <div class="timeline_centre">
+                                <div class="timeline_circle"></div>
+                            </div>
+                            <div class="timeline_right">
+                                <div class="timeline_text">Born in Tashkent, Uzbekistan.</div>
+                            </div>
+                        </div>
+                        <div class="timeline_item">
+                            <div class="timeline_left">
+                                <div class="timeline_date-text">2008</div>
+                            </div>
+                            <div class="timeline_centre">
+                                <div class="timeline_circle"></div>
+                            </div>
+                            <div class="timeline_right">
+                                <div class="timeline_text">Started school at 28-School, Tashkent.</div>
+                            </div>
+                        </div>
+                        <div class="timeline_item">
+                            <div class="timeline_left">
+                                <div class="timeline_date-text">2017</div>
+                            </div>
+                            <div class="timeline_centre">
+                                <div class="timeline_circle"></div>
+                            </div>
+                            <div class="timeline_right">
+                                <div class="timeline_text">Academic Lyceum at Islam Karimov Technical University.</div>
+                            </div>
+                        </div>
+                        <div class="timeline_item">
+                            <div class="timeline_left">
+                                <div class="timeline_date-text">2019</div>
+                            </div>
+                            <div class="timeline_centre">
+                                <div class="timeline_circle"></div>
+                            </div>
+                            <div class="timeline_right">
+                                <div class="timeline_text">Started Mechatronics Engineering at Karabük University, Türkiye.</div>
+                            </div>
+                        </div>
+                        <div class="timeline_item">
+                            <div class="timeline_left">
+                                <div class="timeline_date-text">Present</div>
+                            </div>
+                            <div class="timeline_centre">
+                                <div class="timeline_circle"></div>
+                            </div>
+                            <div class="timeline_right">
+                                <div class="timeline_text">Working as an Engineer at FABLAB (CFYI).</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

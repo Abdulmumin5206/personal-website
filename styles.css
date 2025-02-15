@@ -12,7 +12,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 10px;
+    padding: 5px 20px;
     background: white;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
@@ -20,12 +20,17 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-    height: 40px;
+    height: 60px;
+}
+
+/* Push content below header */
+.page-wrapper {
+    padding-top: 80px;
 }
 
 /* Logo (Left Side) */
 .logo {
-    margin-left: 10px;
+    margin-left: -10px;
 }
 
 .logo img {
@@ -70,92 +75,118 @@ body {
 
 /* Main Content */
 .content {
-    margin-top: 100px;
+    margin-top: 20px;
     padding: 50px 20px;
     text-align: center;
 }
 
 .content h1 {
     font-size: 36px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .content p {
     font-size: 18px;
 }
 
-/* Blog Form Styling */
-#blog-form {
-    background: #fff;
+/* Timeline Styles */
+.timeline_component {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1000px;
+    margin: auto;
+    position: relative;
+    background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-    width: 60%;
-    max-width: 600px;
-    text-align: center;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-#blog-form input,
-#blog-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+.timeline_item {
+    display: grid;
+    grid-template-columns: 100px 50px 1fr;
+    align-items: center;
+    padding: 15px 0;
+    width: 90%;
+    margin: auto;
 }
 
-#blog-form button {
-    background: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#blog-form button:hover {
-    background: #0056b3;
-}
-
-/* Blog Post Styling */
-.blog-post {
-    background: #fff;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 60%;
-    max-width: 600px;
-    text-align: left;
-}
-
-.blog-post h2 {
-    margin: 0;
-    font-size: 20px;
-    color: #007BFF;
-}
-
-.blog-post p {
+.timeline_left {
+    text-align: right;
+    font-weight: bold;
     font-size: 16px;
-    color: #333;
 }
 
-.blog-post small {
-    color: gray;
-    font-size: 12px;
+.timeline_right {
+    text-align: left;
+    font-size: 16px;
 }
 
-.blog-post button {
-    margin-top: 10px;
-    background: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
+/* Timeline Progress Bar Inside Circle */
+.timeline_centre {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-.blog-post button:hover {
-    background: #cc0000;
+
+/* Centered content adjustment */
+.timeline-main_heading-wrapper {
+    text-align: center; /* ✅ Align heading to the right */
+    
+}
+
+.timeline_circle {
+    background: white;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    border: 3px solid #ff6a00;
+    position: relative;
+    z-index: 2; /* ✅ Ensures the circle is above the line */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timeline_progress {
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff6a00, #ee0979);
+    transform: translateX(-50%);
+    z-index: 1; /* ✅ Keeps the line behind the circle */
+}
+
+.timeline_progress-bar {
+    background: linear-gradient(to bottom, #ff6a00, #ee0979);
+    width: 3px;
+    height: 100%;
+    position: absolute;
+    
+}
+
+.timeline_date-text {
+    font-size: 18px;
+    font-weight: bold;
+    white-space: nowrap;
+    text-align: right; /* ✅ Fix alignment issue */
+    padding-right: 10px; /* ✅ Adds space between date and line */
+}
+
+.timeline_text {
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+
+.timeline_circle::after {
+    content: "";
+    position: absolute;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(to bottom, #ff6a00, #ee0979);
+    z-index: 1;
 }
