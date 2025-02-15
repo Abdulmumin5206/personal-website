@@ -103,6 +103,8 @@ body {
     font-size: 18px;
 }
 
+
+
 /* About Section - Centers and styles the about me section */
 .about-container {
     display: flex; /* ✅ Aligns image & text side by side */
