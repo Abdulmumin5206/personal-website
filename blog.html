@@ -26,8 +26,35 @@
 
     <!-- Contact Page Content -->
     <main class="content">
-        <h1>Blog</h1>
-        <p>Feel free to reach out to me via email or social media.</p>
+        <h1>My Blog</h1>
+        <div id="blog-posts"></div>
     </main>
+    
+    <script type="module">
+        import { db } from "./firebase.js";
+        import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    
+        async function loadBlogPosts() {
+            const blogContainer = document.getElementById("blog-posts");
+            const querySnapshot = await getDocs(collection(db, "BlogPosts"));
+    
+            blogContainer.innerHTML = ""; // Clear previous content
+    
+            querySnapshot.forEach((doc) => {
+                const data = doc.data();
+                blogContainer.innerHTML += `
+                    <article class="blog-post">
+                        <h2>${data.title}</h2>
+                        <p>${data.content}</p>
+                        <small>${new Date(data.date.seconds * 1000).toLocaleDateString()}</small>
+                        <hr>
+                    </article>
+                `;
+            });
+        }
+    
+        loadBlogPosts();
+    </script>
+    
 </body>
 </html>
