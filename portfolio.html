@@ -1,35 +1,21 @@
-<main class="content">
-    <h1>My Portfolio</h1>
-    <p>Here are some of my best projects.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Abdulmumin</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header will be dynamically inserted here -->
+    <div id="header-container"></div>
 
-    <div class="portfolio-container">
-        <div class="project" onclick="openModal(1)">
-            <img src="images/project1.jpg" alt="Project 1">
-            <h3>Project 1</h3>
-            <p>Short description of the project.</p>
-        </div>
+    <script src="header.js"></script>
 
-        <div class="project" onclick="openModal(2)">
-            <img src="images/project2.jpg" alt="Project 2">
-            <h3>Project 2</h3>
-            <p>Short description of the project.</p>
-        </div>
-
-        <div class="project" onclick="openModal(3)">
-            <img src="images/project3.jpg" alt="Project 3">
-            <h3>Project 3</h3>
-            <p>Short description of the project.</p>
-        </div>
-    </div>
-
-    <!-- Modal (Popup Window) -->
-    <div id="project-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title"></h2>
-            <img id="modal-img" src="" alt="">
-            <p id="modal-desc"></p>
-            <a id="modal-link" href="#" target="_blank">View Project</a>
-        </div>
-    </div>
-</main>
+    <!-- Contact Page Content -->
+    <main class="content">
+        <h1>Portfolio</h1>
+        <p>Feel free to reach out to me via email or social media.</p>
+    </main>
+</body>
+</html>
