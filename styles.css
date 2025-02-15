@@ -113,14 +113,14 @@ body {
     gap: 40px; /* ✅ Adds spacing between image & text */
     max-width: 1200px; /* ✅ Keeps layout responsive */
     width: 100%;
-    margin: 40px auto;
+    margin: 35px auto;
     text-align: left;
 }
 
 
 /* ✅ Removed border & circle effect */
 .profile-pic {
-    width: 450px; /* ✅ Adjust as needed */
+    width: 400px; /* ✅ Adjust as needed */
     height: auto;
     border-radius: 0;
     border: none;
