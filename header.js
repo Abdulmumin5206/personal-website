@@ -7,3 +7,7 @@ function loadHeader() {
         .catch(error => console.error("Error loading header:", error));
 }
 loadHeader();
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelector(".about-section").classList.add("visible");
+});
