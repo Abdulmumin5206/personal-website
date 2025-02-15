@@ -26,16 +26,34 @@
 
 <main class="content">
     <h1>My Blog</h1>
+
+    <!-- Blog Post Form -->
+    <div id="blog-form">
+        <h3>Create a New Blog Post</h3>
+        <input type="text" id="blog-title" placeholder="Enter Blog Title" required>
+        <textarea id="blog-content" placeholder="Write your blog post..." required></textarea>
+        <button id="submit-post">Post</button>
+    </div>
+
+    <div id="blog-posts">Loading...</div>
+</main>
+
+
+<main class="content">
+    <h1>My Blog</h1>
     <div id="blog-posts">Loading...</div> <!-- Show "Loading..." before data appears -->
 </main>
 
 <script type="module">
     import { db } from "./firebase.js";
-    import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+    import { collection, getDocs, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
     const blogContainer = document.getElementById("blog-posts");
+    const titleInput = document.getElementById("blog-title");
+    const contentInput = document.getElementById("blog-content");
+    const submitBtn = document.getElementById("submit-post");
 
-    // Load cached posts first
+    // Function to load cached posts first
     function loadCachedPosts() {
         const cachedData = localStorage.getItem("blogPosts");
         if (cachedData) {
@@ -45,6 +63,7 @@
         }
     }
 
+    // Function to fetch blog posts from Firestore
     async function fetchBlogPosts() {
         const querySnapshot = await getDocs(collection(db, "BlogPosts"));
         let postsHTML = "";
@@ -65,16 +84,42 @@
             postsHTML = "<p>No blog posts found.</p>";
         }
 
-        // Update the blog container
         blogContainer.innerHTML = postsHTML;
 
-        // Save to local storage
+        // Save posts to local storage for caching
         localStorage.setItem("blogPosts", postsHTML);
     }
 
-    loadCachedPosts(); // Show cached posts instantly
-    fetchBlogPosts(); // Fetch new posts in the background
+    // Function to add a new blog post to Firestore
+    async function addBlogPost() {
+        const title = titleInput.value.trim();
+        const content = contentInput.value.trim();
+
+        if (title === "" || content === "") {
+            alert("Please enter a title and content!");
+            return;
+        }
+
+        await addDoc(collection(db, "BlogPosts"), {
+            title: title,
+            content: content,
+            date: serverTimestamp(),
+        });
+
+        titleInput.value = "";
+        contentInput.value = "";
+
+        alert("Blog post added successfully!");
+
+        fetchBlogPosts(); // Refresh posts
+    }
+
+    submitBtn.addEventListener("click", addBlogPost);
+
+    loadCachedPosts(); // Show cached posts first
+    fetchBlogPosts(); // Fetch latest posts in the background
 </script>
+
 
 
     
