@@ -8,6 +8,19 @@ function loadHeader() {
 }
 loadHeader();
 
+// ✅ Single, correct DOMContentLoaded event
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelector(".about-section").classList.add("visible");
+    const sections = document.querySelectorAll(".fade-in-section");
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+            }
+        });
+    }, { threshold: 0.2 });
+
+    sections.forEach((section) => {
+        observer.observe(section);
+    });
 });

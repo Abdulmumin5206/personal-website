@@ -9,6 +9,7 @@ body {
     scroll-behavior: smooth; /* ✅ Prevents sudden jumps when clicking */
 }
 
+
 * {
     box-sizing: border-box;
 }
@@ -21,19 +22,24 @@ body {
     padding: 5px 20px;
     background: transparent;
     box-shadow: none;
-    position: fixed;
+    position: sticky; /* ✅ Makes the header move with scrolling */
     width: 100vw;
-    top: 20px !important; /* ✅ Forces the header to stay at the top */
     left: 0;
     z-index: 1000;
-    height: 50px;
+    height: 80px;
     
 }
 
-/* Push content below header - Ensures content doesn't overlap with fixed header */
 .page-wrapper {
-    padding-top: 100px;
+    display: flex; /* ✅ Ensures it takes effect */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 0px !important; /* ✅ Pushes content down from the header */
+    width: 100%;
 }
+
+
 
 /* Logo Styling - Sets size and ensures proper display */
 .logo img {
@@ -98,21 +104,56 @@ body {
 }
 
 /* About Section - Centers and styles the about me section */
-.about-section {
-    text-align: center;
-    max-width: 800px;
-    margin: 50px auto;
-    padding: 20px;
-    background: transparent;
-    border-radius: 0px;
-    box-shadow: none;
-}
-.about-section h1 {
-    font-size: 36px;
-    margin-bottom: 20px;
+.about-container {
+    display: flex; /* ✅ Aligns image & text side by side */
+    flex-direction: row; /* ✅ Ensures text is to the right of the image */
+    align-items: flex-start; /* ✅ Centers image & text vertically */
+    gap: 40px; /* ✅ Adds spacing between image & text */
+    max-width: 1200px; /* ✅ Keeps layout responsive */
+    width: 100%;
+    margin: 40px auto;
+    text-align: left;
 }
 
-.about-section p {
-    font-size: 18px;
-    line-height: 1.6;
+
+/* ✅ Removed border & circle effect */
+.profile-pic {
+    width: 450px; /* ✅ Adjust as needed */
+    height: auto;
+    border-radius: 0;
+    border: none;
+    flex-shrink: 0; /* ✅ Prevents image from resizing */
 }
+
+
+
+
+
+/* ✅ Ensures text stays on the left */
+.about-text {
+    max-width: 5000px;
+    flex-grow: 1; /* ✅ Ensures text fills the available space */
+    font-size: 18px; /* ✅ Ensures readability */
+    line-height: 1.8; /* ✅ Increases space between lines */
+    margin-bottom: 15px; /* ✅ Adds space between paragraphs */
+}
+
+.about-text h1 {
+    font-size: 36px;
+    margin-bottom: 15px; /* ✅ Adds space below heading */
+    margin-top: -10px; /* ✅ Moves the heading slightly higher */
+}
+
+
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
