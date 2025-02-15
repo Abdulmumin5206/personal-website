@@ -33,17 +33,25 @@
     import { db } from "./firebase.js";
     import { collection, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-    async function loadBlogPosts() {
-        const blogContainer = document.getElementById("blog-posts");
-        blogContainer.innerHTML = "Loading..."; // Show loading text
+    const blogContainer = document.getElementById("blog-posts");
 
+    // Load cached posts first
+    function loadCachedPosts() {
+        const cachedData = localStorage.getItem("blogPosts");
+        if (cachedData) {
+            blogContainer.innerHTML = cachedData;
+        } else {
+            blogContainer.innerHTML = "Loading...";
+        }
+    }
+
+    async function fetchBlogPosts() {
         const querySnapshot = await getDocs(collection(db, "BlogPosts"));
-
-        blogContainer.innerHTML = ""; // Remove loading text after data loads
+        let postsHTML = "";
 
         querySnapshot.forEach((doc) => {
             const data = doc.data();
-            blogContainer.innerHTML += `
+            postsHTML += `
                 <article class="blog-post">
                     <h2>${data.title}</h2>
                     <p>${data.content}</p>
@@ -54,12 +62,20 @@
         });
 
         if (querySnapshot.empty) {
-            blogContainer.innerHTML = "<p>No blog posts found.</p>";
+            postsHTML = "<p>No blog posts found.</p>";
         }
+
+        // Update the blog container
+        blogContainer.innerHTML = postsHTML;
+
+        // Save to local storage
+        localStorage.setItem("blogPosts", postsHTML);
     }
 
-    loadBlogPosts();
+    loadCachedPosts(); // Show cached posts instantly
+    fetchBlogPosts(); // Fetch new posts in the background
 </script>
+
 
     
 </body>
