@@ -83,3 +83,79 @@ body {
 .content p {
     font-size: 18px;
 }
+
+/* Blog Form Styling */
+#blog-form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    width: 60%;
+    max-width: 600px;
+    text-align: center;
+}
+
+#blog-form input,
+#blog-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#blog-form button {
+    background: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#blog-form button:hover {
+    background: #0056b3;
+}
+
+/* Blog Post Styling */
+.blog-post {
+    background: #fff;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 60%;
+    max-width: 600px;
+    text-align: left;
+}
+
+.blog-post h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #007BFF;
+}
+
+.blog-post p {
+    font-size: 16px;
+    color: #333;
+}
+
+.blog-post small {
+    color: gray;
+    font-size: 12px;
+}
+
+.blog-post button {
+    margin-top: 10px;
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.blog-post button:hover {
+    background: #cc0000;
+}
