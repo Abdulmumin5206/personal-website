@@ -63,32 +63,36 @@
         }
     }
 
-    // Function to fetch blog posts from Firestore
     async function fetchBlogPosts() {
-        const querySnapshot = await getDocs(collection(db, "BlogPosts"));
-        let postsHTML = "";
+    const querySnapshot = await getDocs(collection(db, "BlogPosts"));
+    let postsHTML = "";
 
-        querySnapshot.forEach((doc) => {
-            const data = doc.data();
-            postsHTML += `
-                <article class="blog-post">
-                    <h2>${data.title}</h2>
-                    <p>${data.content}</p>
-                    <small>${new Date(data.date.seconds * 1000).toLocaleDateString()}</small>
-                    <hr>
-                </article>
-            `;
-        });
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const postId = doc.id; // Get the document ID
 
-        if (querySnapshot.empty) {
-            postsHTML = "<p>No blog posts found.</p>";
-        }
+        postsHTML += `
+            <article class="blog-post" id="post-${postId}">
+                <h2 contenteditable="false" id="title-${postId}">${data.title}</h2>
+                <p contenteditable="false" id="content-${postId}">${data.content}</p>
+                <small>${new Date(data.date.seconds * 1000).toLocaleDateString()}</small>
+                
+                <button onclick="editPost('${postId}')">Edit</button>
+                <button onclick="deletePost('${postId}')">Delete</button>
+                <button onclick="savePost('${postId}')" style="display:none;">Save</button>
+                <hr>
+            </article>
+        `;
+    });
 
-        blogContainer.innerHTML = postsHTML;
-
-        // Save posts to local storage for caching
-        localStorage.setItem("blogPosts", postsHTML);
+    if (querySnapshot.empty) {
+        postsHTML = "<p>No blog posts found.</p>";
     }
+
+    blogContainer.innerHTML = postsHTML;
+    localStorage.setItem("blogPosts", postsHTML);
+}
+
 
     // Function to add a new blog post to Firestore
     async function addBlogPost() {
@@ -118,7 +122,50 @@
 
     loadCachedPosts(); // Show cached posts first
     fetchBlogPosts(); // Fetch latest posts in the background
+
+    import { db } from "./firebase.js";
+import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+// Function to delete a blog post
+async function deletePost(postId) {
+    if (confirm("Are you sure you want to delete this post?")) {
+        await deleteDoc(doc(db, "BlogPosts", postId));
+        alert("Blog post deleted!");
+        fetchBlogPosts(); // Refresh posts
+    }
+}
+
+// Function to enable editing a post
+function editPost(postId) {
+    const titleElement = document.getElementById(`title-${postId}`);
+    const contentElement = document.getElementById(`content-${postId}`);
+    const saveButton = document.querySelector(`#post-${postId} button[onclick="savePost('${postId}')"]`);
+    const editButton = document.querySelector(`#post-${postId} button[onclick="editPost('${postId}')"]`);
+
+    titleElement.contentEditable = "true";
+    contentElement.contentEditable = "true";
+    saveButton.style.display = "inline";
+    editButton.style.display = "none";
+}
+
+// Function to save an edited post
+async function savePost(postId) {
+    const titleElement = document.getElementById(`title-${postId}`).innerText;
+    const contentElement = document.getElementById(`content-${postId}`).innerText;
+
+    await updateDoc(doc(db, "BlogPosts", postId), {
+        title: titleElement,
+        content: contentElement,
+        date: serverTimestamp(),
+    });
+
+    alert("Blog post updated!");
+    fetchBlogPosts(); // Refresh posts
+}
+
+
 </script>
+
 
 
 
