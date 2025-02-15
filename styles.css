@@ -110,8 +110,8 @@ body {
     display: flex; /* ✅ Aligns image & text side by side */
     flex-direction: row; /* ✅ Ensures text is to the right of the image */
     align-items: flex-start; /* ✅ Centers image & text vertically */
-    gap: 40px; /* ✅ Adds spacing between image & text */
-    max-width: 1200px; /* ✅ Keeps layout responsive */
+    gap: 60px; /* ✅ Adds spacing between image & text */
+    max-width: 1000px; /* ✅ Keeps layout responsive */
     width: 100%;
     margin: 35px auto;
     text-align: left;
@@ -128,16 +128,27 @@ body {
 }
 
 
+.about-heading {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: -10px; /* ✅ Moves heading slightly higher */
+    color: #333;
+}
 
 
 
 /* ✅ Ensures text stays on the left */
 .about-text {
-    max-width: 5000px;
-    flex-grow: 1; /* ✅ Ensures text fills the available space */
-    font-size: 18px; /* ✅ Ensures readability */
-    line-height: 1.8; /* ✅ Increases space between lines */
-    margin-bottom: 15px; /* ✅ Adds space between paragraphs */
+    max-width: 800px;
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.about-text p strong {
+    color: #007BFF; /* ✅ Highlights key words */
+    font-weight: bold;
 }
 
 .about-text h1 {
