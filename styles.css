@@ -38,6 +38,36 @@ body {
     width: 100%;
 }
 
+/* Popup Message Styling */
+.popup-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 123, 255, 0.9);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+    display: none;
+    z-index: 1001;
+}
+
+/* Fade-in Animation for the Popup */
+@keyframes fadeInOut {
+    0% { opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.popup-message.show {
+    display: block;
+    animation: fadeInOut 3s ease-in-out;
+}
+
+
 /* Logo Styling - Ensures proper alignment */
 .logo img {
     width: 150px;
@@ -159,4 +189,69 @@ body {
     .about-container {
         max-width: 1200px;
     }
+}
+
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column; /* ✅ Stacks items on small screens */
+        align-items: center;
+        text-align: center;
+    }
+
+    .contact-info, .contact-form {
+        max-width: 90%;
+    }
+}
+
+.contact-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5vw; /* ✅ Adds space between contact info & form */
+    max-width: 1000px;
+    width: 90%;
+    margin: 50px auto;
+    text-align: left;
+}
+
+.contact-info {
+    max-width: 400px;
+}
+
+.contact-info a {
+    color: #007BFF; /* ✅ Highlight links */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+
+.contact-form {
+    max-width: 500px;
+    flex-grow: 1;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact-form button {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
 }
