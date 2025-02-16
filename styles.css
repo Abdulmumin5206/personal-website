@@ -37,37 +37,6 @@ body {
     padding-top: 10px; /* ✅ Prevents content from overlapping header */
     width: 100%;
 }
-
-/* Popup Message Styling */
-.popup-message {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 123, 255, 0.9);
-    color: white;
-    padding: 15px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    text-align: center;
-    display: none;
-    z-index: 1001;
-}
-
-/* Fade-in Animation for the Popup */
-@keyframes fadeInOut {
-    0% { opacity: 0; }
-    20% { opacity: 1; }
-    80% { opacity: 1; }
-    100% { opacity: 0; }
-}
-
-.popup-message.show {
-    display: block;
-    animation: fadeInOut 3s ease-in-out;
-}
-
-
 /* Logo Styling - Ensures proper alignment */
 .logo img {
     width: 150px;
@@ -191,23 +160,12 @@ body {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .contact-container {
-        flex-direction: column; /* ✅ Stacks items on small screens */
-        align-items: center;
-        text-align: center;
-    }
-
-    .contact-info, .contact-form {
-        max-width: 90%;
-    }
-}
-
+/* Contact Page Styling */
 .contact-container {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    gap: 5vw; /* ✅ Adds space between contact info & form */
+    gap: 5vw;
     max-width: 1000px;
     width: 90%;
     margin: 50px auto;
@@ -219,7 +177,7 @@ body {
 }
 
 .contact-info a {
-    color: #007BFF; /* ✅ Highlight links */
+    color: #007BFF;
     text-decoration: none;
     font-weight: bold;
 }
@@ -231,27 +189,92 @@ body {
 .contact-form {
     max-width: 500px;
     flex-grow: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .contact-form input, .contact-form textarea {
     width: 100%;
-    padding: 10px;
+    padding: 12px;
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-form input:focus, .contact-form textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+    box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5);
 }
 
 .contact-form button {
     background-color: #007BFF;
     color: white;
-    padding: 10px 15px;
+    padding: 12px 15px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    transition: background 0.3s ease-in-out;
 }
 
 .contact-form button:hover {
     background-color: #0056b3;
+}
+
+/* Add a Loading Spinner */
+.loading-spinner {
+    display: none;
+    margin: 10px auto;
+    width: 24px;
+    height: 24px;
+    border: 3px solid #007BFF;
+    border-top: 3px solid transparent;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Success Message Animation */
+.success-message {
+    display: none;
+    background: rgba(0, 128, 0, 0.9);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    text-align: center;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 18px;
+    animation: fadeInOut 4s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(-10px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-10px); }
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .contact-info, .contact-form {
+        max-width: 90%;
+    }
 }

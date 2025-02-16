@@ -1,0 +1,62 @@
+/* About Section */
+.about-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5vw;
+    max-width: 90%;
+    width: 100%;
+    margin: 3vh auto;
+    text-align: left;
+}
+
+.profile-pic {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 0;
+}
+
+.about-heading {
+    font-size: clamp(28px, 4vw, 45px);
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: -5px;
+    color: #333;
+}
+
+.about-content {
+    padding-top: 0px;
+}
+
+.about-text {
+    max-width: 600px;
+    flex-grow: 1;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: left;
+}
+
+.about-text p strong {
+    color: #007BFF;
+    font-weight: bold;
+}
+
+/* Animation */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Large Screens */
+@media screen and (min-width: 1400px) {
+    .about-container {
+        max-width: 1200px;
+    }
+}
