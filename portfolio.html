@@ -3,20 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Abdulmumin</title>
-    <link rel="stylesheet" href="global.css">
+    <title>Portfolio | Abdulmumin</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script defer src="header.js"></script>
 </head>
 <body>
-    <!-- Header will be dynamically inserted here -->
+    <!-- Header -->
     <div id="header-container"></div>
-
     <script src="header.js"></script>
 
-    <!-- Contact Page Content -->
-    <main class="content fade-in-section">
+    <!-- Portfolio Section -->
+    <div class="portfolio-container fade-in-section">
+        <h1 class="portfolio-heading">My Portfolio</h1>
+        <p class="portfolio-intro">A collection of my latest projects.</p>
 
-        <h1>Portfolio</h1>
-        <p>Feel free to reach out to me via email or social media.</p>
-    </main>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="images/project1.jpg" alt="Project 1">
+                <h2>3D Printed Custom Parts</h2>
+                <p>Designed and printed custom mechanical components.</p>
+            </div>
+            <div class="portfolio-card">
+                <img src="images/project2.jpg" alt="Project 2">
+                <h2>AI-Powered Design Tool</h2>
+                <p>Developed an AI-powered tool to assist engineers in design processes.</p>
+            </div>
+            <div class="portfolio-card">
+                <img src="images/project3.jpg" alt="Project 3">
+                <h2>Automation System</h2>
+                <p>Built an automated manufacturing system using CNC machines.</p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
