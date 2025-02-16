@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const form = document.getElementById("contact-form");
+    const sendingPopup = document.getElementById("sending-popup");
+    const successPopup = document.getElementById("success-popup");
 
     if (!form) {
         console.error("❌ Contact form not found!");
@@ -9,17 +11,14 @@ document.addEventListener("DOMContentLoaded", function () {
     form.addEventListener("submit", async function (e) {
         e.preventDefault(); // ✅ Prevents page reload
 
+        // Show "Sending..." popup
+        sendingPopup.style.display = "block";
+
         const formData = {
             name: this.name.value,
             email: this.email.value,
             message: this.message.value
         };
-
-        const responseMessage = document.getElementById("response-message");
-        const popup = document.createElement("div");
-        popup.className = "popup-message";
-        popup.innerText = "Message Sent Successfully!";
-        document.body.appendChild(popup);
 
         try {
             const response = await fetch("https://personal-website-backend-3u2h.onrender.com/send", {
@@ -28,17 +27,26 @@ document.addEventListener("DOMContentLoaded", function () {
                 body: JSON.stringify(formData)
             });
 
-            const result = await response.json();
-            responseMessage.innerText = result.message;
+            if (response.ok) {
+                // Hide sending popup, show success popup
+                sendingPopup.style.display = "none";
+                successPopup.style.display = "block";
 
-            // ✅ Show popup and remove after 3 seconds
-            popup.classList.add("show");
-            setTimeout(() => {
-                popup.classList.remove("show");
-                document.body.removeChild(popup);
-            }, 3000);
+                // Clear form fields
+                this.reset();
+
+                // Hide success message after 3 seconds
+                setTimeout(() => {
+                    successPopup.style.display = "none";
+                }, 3000);
+            } else {
+                alert("Failed to send message. Please try again.");
+                sendingPopup.style.display = "none";
+            }
         } catch (error) {
-            responseMessage.innerText = "Failed to send message!";
+            alert("Something went wrong. Please try again.");
+            console.error(error);
+            sendingPopup.style.display = "none";
         }
     });
 });
