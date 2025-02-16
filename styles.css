@@ -111,7 +111,7 @@ body {
     flex-direction: row; /* ✅ Ensures text is to the right of the image */
     align-items: flex-start; /* ✅ Centers image & text vertically */
     gap: 60px; /* ✅ Adds spacing between image & text */
-    max-width: 1000px; /* ✅ Keeps layout responsive */
+    max-width: 1050px; /* ✅ Keeps layout responsive */
     width: 100%;
     margin: 35px auto;
     text-align: left;
@@ -136,6 +136,9 @@ body {
     color: #333;
 }
 
+.about-content {
+    padding-top: 2px; /* ✅ Ensures the heading is not pushed down */
+}
 
 
 /* ✅ Ensures text stays on the left */
@@ -144,6 +147,8 @@ body {
     flex-grow: 1;
     font-size: 18px;
     line-height: 1.8;
+    position: relative; /* ✅ Allows movement */
+    
 }
 
 .about-text p strong {
@@ -152,10 +157,9 @@ body {
 }
 
 .about-text h1 {
-    font-size: 36px;
-    margin-bottom: 15px; /* ✅ Adds space below heading */
-    margin-top: -10px; /* ✅ Moves the heading slightly higher */
+    margin-top: -10px !important;
 }
+
 
 
 
@@ -170,3 +174,54 @@ body {
     transform: translateY(0);
 }
 
+@media screen and (max-width: 768px) { 
+    .about-container {
+        flex-direction: column; /* ✅ Stack text & image on small screens */
+        align-items: center; /* ✅ Center content */
+        text-align: center; /* ✅ Align text to center */
+    }
+
+    .profile-pic {
+        width: 80%; /* ✅ Makes image responsive */
+        max-width: 300px; /* ✅ Prevents image from getting too large */
+    }
+
+    .about-heading {
+        font-size: 28px; /* ✅ Reduce heading size for smaller screens */
+    }
+
+    .about-text {
+        font-size: 16px; /* ✅ Reduce text size for better mobile readability */
+        line-height: 1.6;
+    }
+}
+
+@media screen and (max-width: 768px) { 
+    .nav-links {
+        display: none; /* ✅ Hide normal nav on mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        background: white;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links ul {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .nav-toggle {
+        display: block; /* ✅ Show menu button */
+        font-size: 24px;
+        cursor: pointer;
+    }
+}
+@media screen and (max-width: 768px) { 
+    .page-wrapper {
+        padding-top: 100px; /* ✅ Prevents header from covering content */
+    }
+}
