@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.appendChild(popup);
 
         try {
-            const response = await fetch("http://localhost:3000/send", { // ✅ Ensure this is correct
+            const response = await fetch("https://https://personal-website-backend-3u2h.onrender.com/send", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(formData)
