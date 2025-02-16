@@ -6,76 +6,66 @@ body {
     background: #f4f4f4;
     color: #333;
     overflow-x: hidden;
-    scroll-behavior: smooth; /* ✅ Prevents sudden jumps when clicking */
+    scroll-behavior: smooth;
 }
-
 
 * {
     box-sizing: border-box;
 }
 
-/* Header (Fixed Alignment) - Keeps the header fixed at the top */
+/* Header (Fixed Alignment) - Ensures equal spacing on both sides */
 .site-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px;
+    padding: 20px 5vw; /* ✅ Balanced spacing on both sides */
     background: transparent;
     box-shadow: none;
-    position: sticky; /* ✅ Makes the header move with scrolling */
+    position: sticky;
     width: 100vw;
     left: 0;
     z-index: 1000;
     height: 80px;
-    
 }
 
+/* Page Wrapper - Ensures content is centered and properly aligned */
 .page-wrapper {
-    display: flex; /* ✅ Ensures it takes effect */
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 0px !important; /* ✅ Pushes content down from the header */
+    padding-top: 10px; /* ✅ Prevents content from overlapping header */
     width: 100%;
 }
 
-
-
-/* Logo Styling - Sets size and ensures proper display */
+/* Logo Styling - Ensures proper alignment */
 .logo img {
     width: 150px;
     height: 150px;
     object-fit: contain;
-    
+    margin-left: -1vw; /* ✅ Matches right-side spacing */
 }
 
-/* Navigation Menu - Positions navigation items on the right */
+/* Navigation Menu - Keeps spacing even */
 .nav-links {
     display: flex;
     justify-content: flex-end;
-    flex-grow: 1;
-    padding-right: 30px;
+    padding-right: 0vw; /* ✅ Matches left side spacing */
 }
 
-/* Navigation List - Removes default styling and structures links */
 .nav-links ul {
-    list-style: none;
     display: flex;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
+    gap: clamp(10px, 2vw, 25px); /* ✅ Ensures adaptive spacing */
 }
 
-/* Navigation Items - Ensures they are displayed inline */
 .nav-links ul li {
     display: inline;
 }
 
-/* Navigation Links - Styling for links and hover effects */
+/* Navigation Links - Styling for visibility and balance */
 .nav-links ul li a {
-    color: white; /* ✅ Ensures navigation links remain visible */
-    text-decoration: none;
     color: #333;
+    text-decoration: none;
     font-weight: bold;
     font-size: 15px;
     padding: 6px 8px;
@@ -87,7 +77,7 @@ body {
     color: #007BFF;
 }
 
-/* Main Content Area - Centers and spaces out content */
+/* Main Content - Centers content and ensures proper spacing */
 .content {
     margin-top: 20px;
     padding: 50px 20px;
@@ -103,70 +93,60 @@ body {
     font-size: 18px;
 }
 
-
-
-/* About Section - Centers and styles the about me section */
+/* About Section - Ensures alignment and consistency */
 .about-container {
-    display: flex; /* ✅ Aligns image & text side by side */
-    flex-direction: row; /* ✅ Ensures text is to the right of the image */
-    align-items: flex-start; /* ✅ Centers image & text vertically */
-    gap: 60px; /* ✅ Adds spacing between image & text */
-    max-width: 1050px; /* ✅ Keeps layout responsive */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5vw; /* ✅ Adds flexible space between image & text */
+    max-width: 90%; /* ✅ Ensures responsiveness */
     width: 100%;
-    margin: 35px auto;
+    margin: 3vh auto; /* ✅ Balanced top-bottom spacing */
     text-align: left;
 }
 
-
-/* ✅ Removed border & circle effect */
+/* Profile Image - Scales properly on all screen sizes */
 .profile-pic {
-    width: 400px; /* ✅ Adjust as needed */
+    width: 100%;
+    max-width: 400px; /* ✅ Slightly increased size */
     height: auto;
     border-radius: 0;
-    border: none;
-    flex-shrink: 0; /* ✅ Prevents image from resizing */
 }
 
-
+/* About Heading - Positioned correctly */
 .about-heading {
-    font-size: 40px;
+    font-size: clamp(28px, 4vw, 45px);
     font-weight: bold;
     margin-bottom: 20px;
-    margin-top: -10px; /* ✅ Moves heading slightly higher */
+    margin-top: -5px; /* ✅ Fine-tuned positioning */
     color: #333;
 }
 
+/* About Content - Ensures proper alignment */
 .about-content {
-    padding-top: 2px; /* ✅ Ensures the heading is not pushed down */
+    padding-top: 0px;
 }
 
-
-/* ✅ Ensures text stays on the left */
+/* About Text - Readability improvements */
 .about-text {
-    max-width: 800px;
+    max-width: 600px;
     flex-grow: 1;
     font-size: 18px;
     line-height: 1.8;
-    position: relative; /* ✅ Allows movement */
-    
+    text-align: left;
 }
 
 .about-text p strong {
-    color: #007BFF; /* ✅ Highlights key words */
+    color: #007BFF;
     font-weight: bold;
 }
 
-.about-text h1 {
-    margin-top: -10px !important;
-}
-
-
-
-
+/* Fade-in Animation - Ensures smooth transitions */
 .fade-in-section {
     opacity: 0;
     transform: translateY(20px);
     transition: opacity 1s ease-out, transform 1s ease-out;
+    transform: translateY(15px); /* ✅ Moves content slightly higher */
 }
 
 .fade-in-section.visible {
@@ -174,54 +154,9 @@ body {
     transform: translateY(0);
 }
 
-@media screen and (max-width: 768px) { 
+/* Large Screens (TVs, 4K Monitors) - Keeps readability */
+@media screen and (min-width: 1400px) {
     .about-container {
-        flex-direction: column; /* ✅ Stack text & image on small screens */
-        align-items: center; /* ✅ Center content */
-        text-align: center; /* ✅ Align text to center */
-    }
-
-    .profile-pic {
-        width: 80%; /* ✅ Makes image responsive */
-        max-width: 300px; /* ✅ Prevents image from getting too large */
-    }
-
-    .about-heading {
-        font-size: 28px; /* ✅ Reduce heading size for smaller screens */
-    }
-
-    .about-text {
-        font-size: 16px; /* ✅ Reduce text size for better mobile readability */
-        line-height: 1.6;
-    }
-}
-
-@media screen and (max-width: 768px) { 
-    .nav-links {
-        display: none; /* ✅ Hide normal nav on mobile */
-        flex-direction: column;
-        position: absolute;
-        top: 80px;
-        right: 0;
-        background: white;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .nav-links ul {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .nav-toggle {
-        display: block; /* ✅ Show menu button */
-        font-size: 24px;
-        cursor: pointer;
-    }
-}
-@media screen and (max-width: 768px) { 
-    .page-wrapper {
-        padding-top: 100px; /* ✅ Prevents header from covering content */
+        max-width: 1200px;
     }
 }
