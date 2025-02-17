@@ -1,26 +1,42 @@
-<main class="content">
-    <h1>My Portfolio</h1>
-    <p>Here are some of my best projects.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Abdulmumin</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/portfolio.css">
+    <script defer src="header.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-container"></div>
+    <script src="header.js"></script>
 
-    <div class="portfolio-container">
-        <div class="project" onclick="openModal(1)">
-            <img src="images/project1.jpg" alt="Project 1">
-            <h3>Project 1</h3>
-            <p>Short description of the project.</p>
-        </div>
+    <!-- Portfolio Section -->
+    <div class="portfolio-container fade-in-section">
+        <h1 class="portfolio-heading">My Portfolio</h1>
+        <p class="portfolio-intro">A collection of my latest projects.</p>
 
-        <div class="project" onclick="openModal(2)">
-            <img src="images/project2.jpg" alt="Project 2">
-            <h3>Project 2</h3>
-            <p>Short description of the project.</p>
-        </div>
-
-        <div class="project" onclick="openModal(3)">
-            <img src="images/project3.jpg" alt="Project 3">
-            <h3>Project 3</h3>
-            <p>Short description of the project.</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-card">
+                <img src="images/project1.jpg" alt="Project 1">
+                <h2>3D Printed Custom Parts</h2>
+                <p>Designed and printed custom mechanical components.</p>
+            </div>
+            <div class="portfolio-card">
+                <img src="images/project2.jpg" alt="Project 2">
+                <h2>AI-Powered Design Tool</h2>
+                <p>Developed an AI-powered tool to assist engineers in design processes.</p>
+            </div>
+            <div class="portfolio-card">
+                <img src="images/project3.jpg" alt="Project 3">
+                <h2>Automation System</h2>
+                <p>Built an automated manufacturing system using CNC machines.</p>
+            </div>
         </div>
     </div>
+<<<<<<< HEAD
 
     <!-- Modal (Popup Window) -->
 <div id="project-modal" class="modal">
@@ -33,3 +49,7 @@
     </div>
 </div>
 </main>
+=======
+</body>
+</html>
+>>>>>>> f9b9686f4dd85e45d3a3b5cb8c6b4fb6ff4e2990

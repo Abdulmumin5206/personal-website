@@ -3,29 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me | My Website</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>About Me | Abdulmumin</title>
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/global.css">
+    <script defer src="header.js"></script> <!-- ✅ Ensures smooth animations -->
 </head>
 <body>
-
-    <aside class="sidebar">
-        <nav>
-            <ul>
-                <li data-text="🏠 Home"><a href="index.html"><img src="images/home.svg" alt="Home"></a></li>
-                <li data-text="🧑 About Me"><a href="about.html"><img src="images/about.svg" alt="About"></a></li>
-                <li data-text="📄 Resume"><a href="resume.html"><img src="images/resume.svg" alt="Resume"></a></li>
-                <li data-text="📂 Portfolio"><a href="portfolio.html"><img src="images/portfolio.svg" alt="Portfolio"></a></li>
-                <li data-text="📝 Blog"><a href="blog.html"><img src="images/blog.svg" alt="Blog"></a></li>
-            </ul>
-        </nav>
-    </aside>
-
-    <main class="content">
-        <h1>About Me</h1>
-        <p>Write about yourself here.</p>
-    </main>
-
-    <script src="script.js"></script>
-
+    <!-- Header -->
+    <div id="header-container"></div>
+    <script src="header.js"></script>
+    
+    
+    <div class="page-wrapper">
+        <div class="about-container fade-in-section">
+            <img src="images/profile.jpg" alt="Abdulmumin" class="profile-pic"> 
+            
+            <div class="about-content">
+                <h1 class="about-heading">Hello, I’m Abdulmumin...</h1> 
+                <div class="about-text">
+                    <p>
+                        An engineer passionate about <strong>technology, design, and innovation</strong>.  
+                        With a background in <strong>Mechatronics Engineering</strong>, I love exploring  
+                        <strong>cutting-edge technology</strong> and <strong>solving real-world problems</strong>  
+                        using <strong>CNC machining, 3D printing, and automation</strong>.
+                    </p>
+                    <p>
+                        Throughout my journey, I’ve worked on <strong>precision engineering projects, software development</strong>,  
+                        and have always aimed to <strong>push creative boundaries</strong>.  
+                        Whether it’s <strong>prototyping a new product</strong> or <strong>optimizing a manufacturing process</strong>,  
+                        I’m always excited to take on a challenge.
+                    </p>
+                    <p>
+                        ✨ <strong>Let’s collaborate and build something amazing!</strong>  
+                    </p>
+                </div>
+            </div>
+            
+        </div>
+        
+        
+        
+    </div>
+    
+    
 </body>
 </html>
