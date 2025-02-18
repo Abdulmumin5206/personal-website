@@ -1,27 +1,35 @@
 require("dotenv").config();
 const express = require("express");
-const nodemailer = require("nodemailer");
 const cors = require("cors");
+const nodemailer = require("nodemailer");
 
 const app = express();
-
-// ✅ Allow CORS for your frontend domain
-app.use(cors({
-    origin: "https://abdulmumin5206.github.io/personal-website", // ✅ Change this to match your GitHub Pages URL
-    methods: "POST",
-    allowedHeaders: "Content-Type"
-}));
-
 app.use(express.json());
 
-// ✅ Test Route (Check if backend is running)
+// ✅ Allow BOTH GitHub Pages and Localhost
+const allowedOrigins = [
+    "https://abdulmumin5206.github.io",
+    "http://127.0.0.1:5500"
+];
+
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("CORS not allowed for this origin"));
+        }
+    }
+}));
+
+// ✅ Debugging Route (To Check Backend)
 app.get("/", (req, res) => {
-    res.send("Server is running!");
+    res.send("Backend is running!");
 });
 
 // ✅ Handle Contact Form Submission
 app.post("/send", async (req, res) => {
-    console.log("Received request:", req.body); 
+    console.log("Received request:", req.body);
 
     const { name, email, message } = req.body;
 
@@ -30,7 +38,7 @@ app.post("/send", async (req, res) => {
     }
 
     const mailOptions = {
-        from: email,
+        from: process.env.EMAIL,
         to: process.env.EMAIL,
         subject: `New Contact Form Submission from ${name}`,
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
@@ -40,8 +48,8 @@ app.post("/send", async (req, res) => {
         let transporter = nodemailer.createTransport({
             service: "gmail",
             auth: {
-                user: process.env.EMAIL, 
-                pass: process.env.PASSWORD, 
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD,
             },
         });
 
@@ -55,4 +63,4 @@ app.post("/send", async (req, res) => {
 
 // ✅ Start Server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 Server running on port ${PORT}`));
