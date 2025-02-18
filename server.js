@@ -6,23 +6,30 @@ const nodemailer = require("nodemailer");
 const app = express();
 app.use(express.json());
 
-// ✅ Allow BOTH GitHub Pages and Localhost
+// ✅ Allow ALL requests temporarily (for debugging)
+app.use(cors()); 
+
+// ✅ OR, allow specific origins
 const allowedOrigins = [
     "https://abdulmumin5206.github.io",
-    "http://127.0.0.1:5500"
+    "http://127.0.0.1:5500",
+    "http://localhost:3000"
 ];
 
-app.use(cors({
-    origin: function (origin, callback) {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error("CORS not allowed for this origin"));
-        }
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+    if (allowedOrigins.includes(origin)) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
     }
-}));
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(200); // ✅ Handles preflight requests
+    }
+    next();
+});
 
-// ✅ Debugging Route (To Check Backend)
+// ✅ Check if Backend is Running
 app.get("/", (req, res) => {
     res.send("Backend is running!");
 });
