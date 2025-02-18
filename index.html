@@ -3,30 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdulmumin | Personal Website</title>
+    <title>Abdulmumin | Engineer</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/home.css">
-    
-    
-
+    <script defer src="header.js"></script>
 </head>
 
-<script type="module">
-    import { db } from "./firebase.js";
-    console.log("Firebase is connected!", db);
-</script>
-
-
 <body>
-    <!-- Header will be dynamically inserted here -->
+    <!-- Header -->
     <div id="header-container"></div>
 
-    <script src="header.js"></script>
-
-    <!-- Main Content Area -->
-    <main class="content fade-in-section">
+    <!-- Hero Section -->
+    <section class="hero fade-in-section">
         <h1>Welcome to My Personal Website</h1>
-        <p>This is a placeholder for the main content. We will structure and style this later.</p>
-    </main>
+        <p>I'm Abdulmumin, an engineer passionate about technology, innovation, and creativity.</p>
+        <div class="hero-buttons">
+            <a href="portfolio.html" class="btn">View My Work</a>
+            <a href="contact.html" class="btn secondary">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- Feature Sections -->
+    <section class="features">
+        <div class="feature">
+            <h2>Innovation</h2>
+            <p>Bringing cutting-edge technology into real-world applications.</p>
+        </div>
+
+        <div class="feature">
+            <h2>Engineering</h2>
+            <p>Specializing in mechanical design, 3D printing, and automation.</p>
+        </div>
+
+        <div class="feature">
+            <h2>Creativity</h2>
+            <p>Transforming ideas into reality through innovative solutions.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Abdulmumin. All Rights Reserved.</p>
+        <div class="social-links">
+            <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
+        </div>
+    </footer>
+
+    <!-- JS for Animations -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sections = document.querySelectorAll(".fade-in-section");
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.2 });
+            sections.forEach((section) => {
+                observer.observe(section);
+            });
+        });
+    </script>
 </body>
 </html>

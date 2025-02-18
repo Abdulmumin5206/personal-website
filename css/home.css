@@ -1,15 +1,73 @@
-/* Main Content */
-.content {
-    margin-top: 20px;
-    padding: 50px 20px;
+/* Hero Section */
+.hero {
     text-align: center;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #007BFF, #0056b3);
+    color: white;
 }
 
-.content h1 {
+.hero h1 {
     font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
     margin-bottom: 20px;
 }
 
-.content p {
-    font-size: 18px;
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn {
+    padding: 12px 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    background: #ff5733;
+    transition: 0.3s;
+}
+
+.btn.secondary {
+    background: #28a745;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px 20px;
+    background: white;
+    text-align: center;
+}
+
+.feature {
+    max-width: 300px;
+}
+
+.feature h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #333;
+    color: white;
+}
+
+footer a {
+    color: #007BFF;
+    text-decoration: none;
 }
