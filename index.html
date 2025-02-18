@@ -6,12 +6,39 @@
     <title>Abdulmumin | Engineer</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+
     <script defer src="header.js"></script>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
     <!-- Header -->
-    <div id="header-container"></div>
+    <div id="header-container">
+        <header class="site-header">
+            <!-- Logo -->
+            <a href="index.html" class="logo">
+                <img src="images/logo_small.png" alt="Abdulmumin Logo">
+            </a>
+
+            <!-- Navigation -->
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="portfolio.html">Portfolio</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <!-- Dark Mode Toggle -->
+                    <li>
+                        <button id="dark-mode-toggle" class="mode-toggle">
+                            <i id="mode-icon" class="fas fa-moon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero fade-in-section">
@@ -49,22 +76,5 @@
             <a href="https://linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>
         </div>
     </footer>
-
-    <!-- JS for Animations -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const sections = document.querySelectorAll(".fade-in-section");
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add("visible");
-                    }
-                });
-            }, { threshold: 0.2 });
-            sections.forEach((section) => {
-                observer.observe(section);
-            });
-        });
-    </script>
 </body>
 </html>

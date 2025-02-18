@@ -1,19 +1,54 @@
-/* Reset Styles */
+/* 🎨 Define Main Colors */
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #00ADB5;
+    --light-bg: #ffffff;
+    --light-text: #212529;
+}
+
+/* 🌟 General Reset */
 body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    color: #333;
+    background-color: var(--light-bg);
+    color: var(--light-text);
+    transition: background 0.3s ease, color 0.3s ease;
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
 
+/* 🌟 General Buttons */
+.btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* 🔹 Primary & Background Colors */
+.text-primary {
+    color: var(--primary-color);
+}
+
+.bg-primary {
+    background-color: var(--primary-color);
+}
+
+/* 🌍 Reset Box Sizing */
 * {
     box-sizing: border-box;
 }
 
-/* Header */
+/* 🏠 Header */
 .site-header {
     display: flex;
     align-items: center;
@@ -28,7 +63,7 @@ body {
     height: 80px;
 }
 
-/* Logo */
+/* 🔹 Logo */
 .logo img {
     width: 150px;
     height: 150px;
@@ -36,7 +71,7 @@ body {
     margin-left: -1vw;
 }
 
-/* Navigation */
+/* 🔗 Navigation Menu */
 .nav-links {
     display: flex;
     justify-content: flex-end;
@@ -46,14 +81,16 @@ body {
 .nav-links ul {
     display: flex;
     gap: clamp(10px, 2vw, 25px);
+    align-items: center;
 }
 
 .nav-links ul li {
     display: inline;
 }
 
+/* 🌍 Navigation Links */
 .nav-links ul li a {
-    color: #333;
+    color: #000000;
     text-decoration: none;
     font-weight: bold;
     font-size: 15px;
@@ -63,10 +100,10 @@ body {
 }
 
 .nav-links ul li a:hover {
-    color: #007BFF;
+    color: var(--secondary-color);
 }
 
-/* Responsive Adjustments */
+/* 📱 Responsive Adjustments */
 @media screen and (max-width: 768px) {
     .nav-links ul {
         flex-direction: column;
@@ -74,7 +111,7 @@ body {
     }
 }
 
-/* Fade-in Animation */
+/* 🎭 Smooth Fade-in Animation */
 .fade-in-section {
     opacity: 0;
     transform: translateY(20px);

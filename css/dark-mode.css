@@ -1,0 +1,47 @@
+/* 🎨 Define Dark Mode Colors */
+:root {
+    --dark-bg: #393E46;
+    --dark-header: #222831;
+    --dark-text: #EEEEEE;
+}
+
+/* 🌙 Dark Mode Styling */
+.dark-mode {
+    background-color: var(--dark-bg);
+    color: var(--dark-text);
+}
+
+/* 🌙 Dark Mode Styles for Header */
+.dark-mode .site-header {
+    background-color: var(--dark-header);
+}
+
+.dark-mode a {
+    color: var(--secondary-color);
+}
+
+/* 🌓 Dark Mode Button */
+.mode-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0px;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* ✅ Make the PNG Icons the Right Size */
+.mode-toggle img {
+    width: 20px;
+    height: 20px;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* 🔆 Adjust Icon in Dark Mode */
+.dark-mode .mode-toggle img {
+    filter: invert(1); /* Inverts colors if needed */
+}
+
+/* 🖱️ Hover Effect */
+.mode-toggle:hover {
+    transform: scale(1.3);
+}

@@ -27,13 +27,13 @@
     border-radius: 5px;
     text-decoration: none;
     font-size: 16px;
-    color: white;
-    background: #ff5733;
+    color: rgb(0, 0, 0);
+    background: #EEEEEE;
     transition: 0.3s;
 }
 
 .btn.secondary {
-    background: #28a745;
+    background: #EEEEEE;
 }
 
 .btn:hover {
