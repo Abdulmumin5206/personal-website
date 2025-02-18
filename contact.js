@@ -1,47 +1,69 @@
 document.addEventListener("DOMContentLoaded", function () {
     const contactForm = document.getElementById("contact-form");
-    const sendingPopup = document.getElementById("sending-popup");
+    const sendButton = document.getElementById("send-btn");
+    const buttonText = document.getElementById("btn-text");
+    const buttonLoader = document.getElementById("btn-loader");
     const successPopup = document.getElementById("success-popup");
-    const errorPopup = document.getElementById("error-popup");
 
     if (!contactForm) {
-        console.error("⚠️ Form element not found!");
+        console.error("⚠️ Contact form not found in the DOM!");
         return;
     }
 
     contactForm.addEventListener("submit", async function (e) {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
+
+        // Show loader animation
+        sendButton.classList.add("sending");
+        buttonText.style.display = "none";
+        buttonLoader.style.display = "inline-block";
 
         // Get input values
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const message = document.getElementById("message").value.trim();
 
-        // Show "Sending..." popup
-        sendingPopup.style.display = "block";
+        if (!name || !email || !message) {
+            alert("⚠️ Please fill out all fields before submitting.");
+            resetButton();
+            return;
+        }
 
         try {
             const response = await fetch("https://personal-website-backend-3u2h.onrender.com/send", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, message })
+                body: JSON.stringify({ name, email, message }),
             });
 
-            const result = await response.json();
-            sendingPopup.style.display = "none"; // Hide sending popup
+            if (!response.ok) throw new Error("Failed to send message!");
 
-            if (response.ok) {
-                successPopup.style.display = "block";
-                contactForm.reset(); // Clear form after successful send
-                setTimeout(() => { successPopup.style.display = "none"; }, 3000);
-            } else {
-                throw new Error(result.error || "Failed to send message.");
+            const result = await response.json();
+
+            if (result.message === "Email sent successfully!") {
+                showSuccessPopup();
+                contactForm.reset();
             }
         } catch (error) {
-            console.error("Error sending message:", error);
-            sendingPopup.style.display = "none"; // Hide sending popup
-            errorPopup.style.display = "block";
-            setTimeout(() => { errorPopup.style.display = "none"; }, 3000);
+            alert("❌ Error sending message! Try again.");
+            console.error("Error:", error);
+        } finally {
+            resetButton();
         }
     });
+
+    // Show success popup
+    function showSuccessPopup() {
+        successPopup.classList.add("show");
+        setTimeout(() => {
+            successPopup.classList.remove("show");
+        }, 3000);
+    }
+
+    // Reset button state
+    function resetButton() {
+        sendButton.classList.remove("sending");
+        buttonText.style.display = "block";
+        buttonLoader.style.display = "none";
+    }
 });
