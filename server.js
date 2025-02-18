@@ -1,40 +1,33 @@
-const express = require("express");
-const cors = require("cors");
-const nodemailer = require("nodemailer");
 require("dotenv").config();
+const express = require("express");
+const nodemailer = require("nodemailer");
+const cors = require("cors");
 
 const app = express();
 
-// ✅ Fix: Allow frontend requests by enabling CORS
+// ✅ Allow CORS for your frontend domain
 app.use(cors({
-    origin: "*", // Allows requests from any origin
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"]
+    origin: "https://abdulmumin5206.github.io/personal-website", // ✅ Change this to match your GitHub Pages URL
+    methods: "POST",
+    allowedHeaders: "Content-Type"
 }));
 
 app.use(express.json());
 
-// ✅ Test Route (To confirm backend is running)
+// ✅ Test Route (Check if backend is running)
 app.get("/", (req, res) => {
     res.send("Server is running!");
 });
 
 // ✅ Handle Contact Form Submission
 app.post("/send", async (req, res) => {
-    console.log("Received request:", req.body);
+    console.log("Received request:", req.body); 
 
     const { name, email, message } = req.body;
+
     if (!name || !email || !message) {
         return res.status(400).json({ error: "All fields are required!" });
     }
-
-    const transporter = nodemailer.createTransport({
-        service: "gmail",
-        auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
-        }
-    });
 
     const mailOptions = {
         from: email,
@@ -44,6 +37,14 @@ app.post("/send", async (req, res) => {
     };
 
     try {
+        let transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+                user: process.env.EMAIL, 
+                pass: process.env.PASSWORD, 
+            },
+        });
+
         await transporter.sendMail(mailOptions);
         res.status(200).json({ message: "Email sent successfully!" });
     } catch (error) {

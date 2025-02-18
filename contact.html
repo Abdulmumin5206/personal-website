@@ -9,24 +9,25 @@
     <script defer src="header.js"></script> 
 </head>
 <body>
+
     <!-- Header -->
     <div id="header-container"></div>
-    <script src="header.js"></script>
 
     <!-- Contact Section -->
     <div class="contact-container fade-in-section">
+        
         <!-- Left Side: Social Icons -->
         <div class="contact-icons">
-            <a href="mailto:abdusattorovme@gmail.com" target="_blank">
+            <a href="mailto:abdusattorovme@gmail.com" target="_blank" title="Email">
                 <img src="icons/gmail.svg" alt="Email" class="contact-icon">
             </a>
-            <a href="https://www.linkedin.com/in/abdusattorovme" target="_blank">
+            <a href="https://www.linkedin.com/in/abdusattorovme" target="_blank" title="LinkedIn">
                 <img src="icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
             </a>
-            <a href="https://instagram.com/abdulmomin.ab" target="_blank">
+            <a href="https://instagram.com/abdulmomin.ab" target="_blank" title="Instagram">
                 <img src="icons/instagram.svg" alt="Instagram" class="contact-icon">
             </a>
-            <a href="https://facebook.com/yourprofile" target="_blank">
+            <a href="https://facebook.com/yourprofile" target="_blank" title="Facebook">
                 <img src="icons/facebook.svg" alt="Facebook" class="contact-icon">
             </a>
         </div>
@@ -35,9 +36,9 @@
         <div class="contact-form">
             <h2>Send a Quick Message</h2>
             <form id="contact-form">
-                <input type="text" name="name" placeholder="Your Name" required>
-                <input type="email" name="email" placeholder="Your Email" required>
-                <textarea name="message" placeholder="Your Message" required></textarea>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <textarea id="message" name="message" placeholder="Your Message" required></textarea>
                 <button type="submit">Send</button>
             </form>
         </div>
@@ -46,7 +47,10 @@
     <!-- Popup Messages -->
     <div id="sending-popup" class="popup-message">✉️ Sending...</div>
     <div id="success-popup" class="popup-message">✅ Message Sent Successfully!</div>
+    <div id="error-popup" class="popup-message">❌ Something went wrong! Try again.</div>
 
+    <!-- Contact Form Script -->
     <script src="contact.js"></script>
+
 </body>
 </html>

@@ -1,52 +1,47 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contact-form");
+    const contactForm = document.getElementById("contact-form");
     const sendingPopup = document.getElementById("sending-popup");
     const successPopup = document.getElementById("success-popup");
+    const errorPopup = document.getElementById("error-popup");
 
-    if (!form) {
-        console.error("❌ Contact form not found!");
+    if (!contactForm) {
+        console.error("⚠️ Form element not found!");
         return;
     }
 
-    form.addEventListener("submit", async function (e) {
-        e.preventDefault(); // ✅ Prevents page reload
+    contactForm.addEventListener("submit", async function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Get input values
+        const name = document.getElementById("name").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const message = document.getElementById("message").value.trim();
 
         // Show "Sending..." popup
         sendingPopup.style.display = "block";
-
-        const formData = {
-            name: this.name.value,
-            email: this.email.value,
-            message: this.message.value
-        };
 
         try {
             const response = await fetch("https://personal-website-backend-3u2h.onrender.com/send", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData)
+                body: JSON.stringify({ name, email, message })
             });
 
+            const result = await response.json();
+            sendingPopup.style.display = "none"; // Hide sending popup
+
             if (response.ok) {
-                // Hide sending popup, show success popup
-                sendingPopup.style.display = "none";
                 successPopup.style.display = "block";
-
-                // Clear form fields
-                this.reset();
-
-                // Hide success message after 3 seconds
-                setTimeout(() => {
-                    successPopup.style.display = "none";
-                }, 3000);
+                contactForm.reset(); // Clear form after successful send
+                setTimeout(() => { successPopup.style.display = "none"; }, 3000);
             } else {
-                alert("Failed to send message. Please try again.");
-                sendingPopup.style.display = "none";
+                throw new Error(result.error || "Failed to send message.");
             }
         } catch (error) {
-            alert("Something went wrong. Please try again.");
-            console.error(error);
-            sendingPopup.style.display = "none";
+            console.error("Error sending message:", error);
+            sendingPopup.style.display = "none"; // Hide sending popup
+            errorPopup.style.display = "block";
+            setTimeout(() => { errorPopup.style.display = "none"; }, 3000);
         }
     });
 });
