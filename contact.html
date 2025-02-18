@@ -17,20 +17,20 @@
     <div class="contact-container fade-in-section">
         
         <!-- Left Side: Social Icons -->
-        <div class="contact-icons">
-            <a href="mailto:abdusattorovme@gmail.com" target="_blank" title="Email">
-                <img src="icons/gmail.svg" alt="Email" class="contact-icon">
-            </a>
-            <a href="https://www.linkedin.com/in/abdusattorovme" target="_blank" title="LinkedIn">
-                <img src="icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
-            </a>
-            <a href="https://instagram.com/abdulmomin.ab" target="_blank" title="Instagram">
-                <img src="icons/instagram.svg" alt="Instagram" class="contact-icon">
-            </a>
-            <a href="https://facebook.com/yourprofile" target="_blank" title="Facebook">
-                <img src="icons/facebook.svg" alt="Facebook" class="contact-icon">
-            </a>
-        </div>
+<div class="contact-icons">
+    <a href="mailto:abdusattorovme@gmail.com" target="_blank" title="Email">
+        <img src="icons/gmail.svg" alt="Email" class="contact-icon">
+    </a>
+    <a href="https://www.linkedin.com/in/abdusattorovme" target="_blank" title="LinkedIn">
+        <img src="icons/linkedin.svg" alt="LinkedIn" class="contact-icon">
+    </a>
+    <a href="https://instagram.com/abdulmomin.ab" target="_blank" title="Instagram">
+        <img src="icons/instagram.svg" alt="Instagram" class="contact-icon">
+    </a>
+    <a href="https://facebook.com/yourprofile" target="_blank" title="Facebook">
+        <img src="icons/facebook.svg" alt="Facebook" class="contact-icon">
+    </a>
+</div>
 
         <!-- Right Side: Contact Form -->
         <div class="contact-form">
@@ -45,23 +45,24 @@
                     <span id="btn-loader" class="loader" style="display: none;">⏳ Sending...</span>
                 </button>
             </form>
-            
-            <!-- Success Popup -->
-            <div id="success-popup" class="popup-message">
-                <button class="dismiss">&times;</button>
-                <div class="content">
-                    <span class="title">Message Sent!</span>
-                    <p class="message">Your message has been successfully sent.</p>
-                </div>
-            </div>
-            
         </div>
     </div>
 
-    <!-- Popup Messages -->
-    <div id="sending-popup" class="popup-message">✉️ Sending...</div>
-    <div id="success-popup" class="popup-message">✅ Message Sent Successfully!</div>
-    <div id="error-popup" class="popup-message">❌ Something went wrong! Try again.</div>
+    <!-- ✅ Success Popup -->
+    <div id="success-popup" class="popup-message">
+        <div class="popup-content">
+            <button class="dismiss">&times;</button>
+            <div class="image">
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 7L9.00004 18L3.99994 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
+            </div>
+            <div class="content">
+                <span class="title">Message Sent!</span>
+                <p class="message">Your message has been successfully sent.</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Form Script -->
     <script src="contact.js"></script>

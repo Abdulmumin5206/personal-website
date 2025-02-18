@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const buttonText = document.getElementById("btn-text");
     const buttonLoader = document.getElementById("btn-loader");
     const successPopup = document.getElementById("success-popup");
+    const dismissButton = document.querySelector(".dismiss");
 
     if (!contactForm) {
         console.error("⚠️ Contact form not found in the DOM!");
@@ -38,12 +39,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (!response.ok) throw new Error("Failed to send message!");
 
-            const result = await response.json();
-
-            if (result.message === "Email sent successfully!") {
-                showSuccessPopup();
-                contactForm.reset();
-            }
+            showSuccessPopup();
+            contactForm.reset();
         } catch (error) {
             alert("❌ Error sending message! Try again.");
             console.error("Error:", error);
@@ -52,15 +49,20 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Show success popup
     function showSuccessPopup() {
         successPopup.classList.add("show");
+
         setTimeout(() => {
             successPopup.classList.remove("show");
+            location.reload(); // ✅ Refreshes page after 3 seconds
         }, 3000);
     }
 
-    // Reset button state
+    dismissButton.addEventListener("click", function () {
+        successPopup.classList.remove("show");
+        location.reload();
+    });
+
     function resetButton() {
         sendButton.classList.remove("sending");
         buttonText.style.display = "block";
